@@ -100,6 +100,25 @@ The spi_top module integrates all four functional sub-blocks into a unified AMBA
 <img width="1852" height="802" alt="image" src="https://github.com/user-attachments/assets/9229c2eb-11d8-40b2-afaa-1e7be85a6cf3" />
 <img width="1860" height="362" alt="image" src="https://github.com/user-attachments/assets/f481fbad-d6be-4fe6-9c06-f2ab94727b19" />
 
+### RTL Linting (Synopsys VC Static)
 
+<img width="1600" height="828" alt="WhatsApp Image 2026-11-13 at 23 12 11" src="https://github.com/user-attachments/assets/039d050d-36d1-41b2-bab3-ae05221ff53e" />
+
+The RTL design (spi_top) was analyzed using Synopsys VC Static (X-2025.06) to verify coding standards, structural integrity, and synthesizability
+
+* Management Summary: 0 Fatals, 0 Errors, and 0 RTL coding or structural warnings across LANGUAGE_CHECK and STRUCTURAL_CHECK stages (11 informational messages: ReportPortInfo-ML and RegInputOutput-ML).
+* Code Quality Verification: Confirmed zero inferred latches, clean sensitivity lists, and proper bit-width alignment across all sub-modules.
+* Environment Note: The single DB_CANT_LOAD warning in DESIGN_READ is due to an unlinked `.db` technology library in the server setup and does not indicate any RTL defect.
+
+### Logic Synthesis & Timing Analysis (Synopsys Design Compiler)
+
+<img width="1600" height="826" alt="WhatsApp Image 2026-11-13 at 23 14 43" src="https://github.com/user-attachments/assets/2fe1e97c-2ce3-4ac4-925e-7974fe2082d3" />
+
+The lint-clean RTL design was synthesized into a gate-level netlist using Synopsys Design Compiler and verified for setup timing closure:
+* Target Clock (PCLK): 20.00 ns period (50 MHz)
+* Critical Path:apb/SPI_BR_reg[2] through serial_clock_gen (s1) to spi_slave_control (ssc/rcv_reg/D)
+* Data Required Time: 19.15 ns (including -0.85 ns library setup time)
+* Data Arrival Time: 19.14 ns.
+* Worst Setup Slack: +0.01 ns (MET) — Zero setup timing violations
 
 
