@@ -94,5 +94,12 @@ The spi_top module integrates all four functional sub-blocks into a unified AMBA
   * spi_slave_control (ssc): Tracks the frame duration using baudratedivisor and send_data, generating the internal slave-select signal (ssoe, routed to ss_o), transfer-in-progress indicator (tip), and end-of-frame receive pulse (receive_data).
   * shift_register (s2): Serializes mosi_data onto mosi_o and deserializes miso_i into miso_data using the clock strobes from s1, returning the received byte to apb when receive_data is asserted.
 
+### Simulation Results
+<img width="1862" height="785" alt="image" src="https://github.com/user-attachments/assets/1fe06c99-cb7e-4ec4-a1c8-2b7461228350" />
+<img width="1868" height="798" alt="image" src="https://github.com/user-attachments/assets/c0c09719-e433-4d25-bf1c-f12ce84b9964" />
+<img width="1852" height="802" alt="image" src="https://github.com/user-attachments/assets/9229c2eb-11d8-40b2-afaa-1e7be85a6cf3" />
+<img width="1860" height="362" alt="image" src="https://github.com/user-attachments/assets/f481fbad-d6be-4fe6-9c06-f2ab94727b19" />
+
+
 
 
